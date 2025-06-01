@@ -1,0 +1,7 @@
+theme = dark:tokyonight_night,light:tokyonight-day
+fullscreen = true
+font-family = "Hack"
+font-size = 14
+font-feature=-liga
+font-thicken=true
+shell-integration = fish
