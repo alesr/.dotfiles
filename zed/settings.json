@@ -1,0 +1,150 @@
+{
+  "features": {
+    "edit_prediction_provider": "none",
+    "inline_completion_provider": "zed"
+  },
+  "assistant": {
+    "default_profile": "write",
+    "always_allow_tool_actions": true,
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking-latest"
+    },
+    "version": "2"
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night"
+  },
+  "autosave": "on_focus_change",
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "ui_font_size": 13,
+  "buffer_font_size": 13.0,
+  "use_autoclose": true,
+  "always_treat_brackets_as_autoclosed": false,
+  "tabs": {
+    "git_status": true,
+    "close_position": "right"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": true
+  },
+  "formatter": "language_server",
+  "lsp": {
+    "gopls": {
+      "usePlaceholders": true,
+      "completeUnimported": true,
+      "staticcheck": true,
+      "matcher": "fuzzy",
+      "hints": {
+        "compositeLiteralFields": true,
+        "assignVariableTypes": true,
+        "constantValues": true,
+        "functionTypeParameters": true,
+        "parameterNames": true,
+        "rangeVariableTypes": true,
+        "codeActions": true
+      }
+    }
+  },
+  "gutter": {
+    "line_numbers": true,
+    "code_actions": true,
+    "folds": true
+  },
+  "indent_guides": {
+    "enabled": false
+  },
+  "vim_mode": false,
+  "toolbar": {
+    // Whether to show breadcrumbs.
+    "breadcrumbs": true,
+    // Whether to show quick action buttons.
+    "quick_actions": true,
+    // Whether to show the Selections menu in the editor toolbar
+    "selections_menu": true
+  },
+  "scrollbar": {
+    // When to show the scrollbar in the editor.
+    // This setting can take four values:
+    //
+    // 1. Show the scrollbar if there's important information or
+    //    follow the system's configured behavior (default):
+    //   "auto"
+    // 2. Match the system's configured behavior:
+    //    "system"
+    // 3. Always show the scrollbar:
+    //    "always"
+    // 4. Never show the scrollbar:
+    //    "never"
+    "show": "auto",
+    // Whether to show cursor positions in the scrollbar.
+    "cursors": true,
+    // Whether to show git diff indicators in the scrollbar.
+    "git_diff": true,
+    // Whether to show buffer search results in the scrollbar.
+    "search_results": true,
+    // Whether to show selected symbol occurrences in the scrollbar.
+    "selected_symbol": true,
+    // Whether to show diagnostic indicators in the scrollbar.
+    "diagnostics": "all"
+  },
+  "base_keymap": "VSCode",
+  "buffer_font_family": "Hack",
+  "centered_layout": {
+    "left_padding": 0.2,
+    "right_padding": 0.2
+  },
+  "load_direnv": "shell_hook",
+  "cursor_shape": "bar",
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": true,
+    "show_tab_bar_buttons": true
+  },
+  "git_status": true,
+  "journal": {
+    "path": "~",
+    "hour_format": "hour24"
+  },
+  "terminal": {
+    "alternate_scroll": "off",
+    "blinking": "terminal_controlled",
+    "copy_on_select": false,
+    "dock": "bottom",
+    "detect_venv": {
+      "on": {
+        "directories": [
+          ".env",
+          "env",
+          ".venv",
+          "venv"
+        ],
+        "activate_script": "default"
+      }
+    },
+    "env": {},
+    "font_family": "Hack",
+    "font_features": null,
+    "font_size": null,
+    "line_height": "comfortable",
+    "option_as_meta": false,
+    "button": true,
+    "shell": "system",
+    "toolbar": {
+      "breadcrumbs": true
+    },
+    "working_directory": "current_project_directory",
+    "scrollbar": {
+      "show": null
+    },
+    "mode": "dark"
+  }
+}
