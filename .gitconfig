@@ -1,0 +1,284 @@
+# =============================================================================
+# Git Configuration - Alessandro Resta
+# =============================================================================
+# This file contains comprehensive git settings for improved workflow,
+# better defaults, and enhanced developer experience.
+
+# =============================================================================
+# USER INFORMATION
+# =============================================================================
+[user]
+  # Primary identity for commits and tags
+  email = alessandro.resta@proton.me
+  name = Alessandro Resta
+
+# =============================================================================
+# CORE SETTINGS
+# =============================================================================
+[core]
+  # Default text editor for commit messages, interactive rebase, etc.
+  editor = nvim
+
+  # Use Delta as pager for better diff/log viewing
+  pager = delta
+
+  # Global gitignore file for common files to ignore
+  excludesfile = /Users/alesr/.gitignore_global
+
+  # Handle line endings properly (convert CRLF to LF on input)
+  autocrlf = input
+
+  # Warn when converting line endings might be unsafe
+  safecrlf = warn
+
+  # Handle Unicode filenames properly on macOS
+  precomposeUnicode = true
+
+  # Show non-ASCII characters in filenames instead of escaping them
+  quotepath = false
+
+# =============================================================================
+# REPOSITORY INITIALIZATION
+# =============================================================================
+[init]
+  # Use 'main' as default branch name for new repositories
+  defaultBranch = main
+
+# =============================================================================
+# BRANCH MANAGEMENT
+# =============================================================================
+[branch]
+  # Automatically set up tracking when creating new branches
+  autoSetupMerge = always
+
+  # Configure new branches to rebase instead of merge by default
+  autoSetupRebase = always
+
+# =============================================================================
+# REMOTE OPERATIONS (PUSH/PULL/FETCH)
+# =============================================================================
+[push]
+  # Only push current branch to upstream with same name
+  default = simple
+
+  # Automatically set up remote tracking for new branches
+  autoSetupRemote = true
+
+[pull]
+  # Use rebase instead of merge to maintain cleaner history
+  rebase = true
+
+[fetch]
+  # Automatically remove remote tracking branches that no longer exist
+  prune = true
+
+# =============================================================================
+# REBASE CONFIGURATION
+# =============================================================================
+[rebase]
+  # Automatically stash changes before rebasing and pop after
+  autoStash = true
+
+  # Automatically squash commits marked with 'squash!' or 'fixup!'
+  autoSquash = true
+
+# =============================================================================
+# COMMIT AND MERGE SETTINGS
+# =============================================================================
+[commit]
+  # Show diff in commit message editor for better context
+  verbose = true
+
+  # Disable GPG signing by default (enable if using signed commits)
+  gpgSign = false
+
+[merge]
+  # Show original, local, and remote versions in conflict markers
+  conflictStyle = diff3
+
+  # Use vimdiff as default merge tool
+  tool = vimdiff
+
+[mergetool]
+  # Don't prompt before opening merge tool
+  prompt = false
+
+  # Don't keep .orig backup files after merging
+  keepBackup = false
+
+# =============================================================================
+# CONFLICT RESOLUTION
+# =============================================================================
+[rerere]
+  # Remember and reuse conflict resolutions automatically
+  enabled = true
+
+# =============================================================================
+# STATUS AND DISPLAY
+# =============================================================================
+[status]
+  # Show summary of submodule changes
+  submoduleSummary = true
+
+  # Show all untracked files (not just directories)
+  showUntrackedFiles = all
+
+# =============================================================================
+# DIFF CONFIGURATION
+# =============================================================================
+[diff]
+  # Highlight moved code blocks in diffs
+  colorMoved = default
+
+  # Use histogram algorithm for better diff performance and accuracy
+  algorithm = histogram
+
+  # Use descriptive prefixes (index/work tree) instead of a/b
+  mnemonicPrefix = true
+
+  # Detect both renames and copies in diffs
+  renames = copies
+
+  # Show submodule changes in log format
+  submodule = log
+
+# =============================================================================
+# LOG DISPLAY
+# =============================================================================
+[log]
+  # Use abbreviated commit hashes in log output
+  abbrevCommit = true
+
+  # Show branch and tag names in short format
+  decorate = short
+
+  # Use local timezone for dates
+  date = local
+
+# =============================================================================
+# TAG MANAGEMENT
+# =============================================================================
+[tag]
+  # Sort tags using version number logic
+  sort = version:refname
+
+[versionsort]
+  # Define version suffixes for proper sorting
+  suffix = -pre
+  suffix = .pre
+  suffix = -beta
+  suffix = .beta
+  suffix = -rc
+  suffix = .rc
+
+# =============================================================================
+# SEARCH CONFIGURATION
+# =============================================================================
+[grep]
+  # Show line numbers in grep output
+  lineNumber = true
+
+  # Use extended regular expressions
+  extendedRegexp = true
+
+# =============================================================================
+# HELP SYSTEM
+# =============================================================================
+[help]
+  # Auto-correct typos after 1 second delay
+  autoCorrect = 10
+
+# =============================================================================
+# DELTA PAGER CONFIGURATION
+# =============================================================================
+[interactive]
+  # Use Delta for interactive diff filtering (add -p, etc.)
+  diffFilter = delta --color-only
+
+[delta]
+  # Enable navigation between files and hunks
+  navigate = true
+
+  # Show side-by-side diffs
+  side-by-side = true
+
+  # Show line numbers
+  line-numbers = true
+
+  # Use gruvbox theme for syntax highlighting
+  syntax-theme = gruvbox-dark
+
+  # Enable features defined below
+  features = line-numbers decorations
+
+  # Highlight whitespace errors
+  whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+  # Style for commit decorations
+  commit-decoration-style = bold yellow box ul
+
+  # Style for file headers
+  file-style = bold yellow ul
+
+  # No decoration for file names
+  file-decoration-style = none
+
+# =============================================================================
+# GIT LFS (Large File Storage)
+# =============================================================================
+[filter "lfs"]
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+
+# =============================================================================
+# URL REWRITES
+# =============================================================================
+[url "git@github.com:"]
+  # Automatically use SSH instead of HTTPS for GitHub
+  insteadOf = https://github.com/
+
+# =============================================================================
+# ALIASES - SHORTCUTS FOR COMMON COMMANDS
+# =============================================================================
+[alias]
+  # Basic shortcuts
+  co = checkout
+  cob = checkout -b
+  br = branch
+  st = status
+  ss = status -s -b
+
+  # Commit shortcuts
+  cm = commit -m
+  amend = commit --amend -m
+  wip = commit -am "WIP"
+  unwip = reset HEAD~1
+
+  # Modern git commands
+  sw = switch
+  swc = switch -c
+  restore = restore
+
+  # Undo operations
+  unstage = reset --soft HEAD^
+
+  # Log and history
+  last = log -1 HEAD
+  ls = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+  # Remote operations
+  fap = fetch --prune
+  pushf = push --force-with-lease
+
+  # Branch management
+  recent = branch --sort=-committerdate
+  cleanup = "!git branch --merged | grep -v '\\*\\|main\\|master\\|develop' | xargs -n 1 git branch -d"
+
+  # Information and analysis
+  authors = "!git shortlog -s -- | sort -n -k1"
+  root = rev-parse --show-toplevel
+  ignored = ls-files --others --ignored --exclude-standard
+  alias = "!git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^[:space:]]*\\)/\\1/' | sort"
